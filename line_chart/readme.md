@@ -6,7 +6,7 @@ Este script genera un gráfico de líneas de serie temporal para representar la 
 
 El gráfico permite visualizar la variación de las solicitudes a través del tiempo e identifica automáticamente el año con el mayor número de registros (el valor máximo de la serie).
 
-![Ejemplo del gráfico](line_chart/example.png)
+![Ejemplo del gráfico](example.png)
 
 ---
 
