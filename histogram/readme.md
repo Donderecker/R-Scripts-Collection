@@ -145,3 +145,38 @@ El archivo generado presenta las siguientes características:
 * **Eje X:** Representa la superficie de los predios en hectáreas.
 * **Eje Y:** Representa la frecuencia (número de predios).
 * **Barras:** Cada barra representa un intervalo de superficie. Su altura indica la cantidad de polígonos dentro de ese rango.
+
+### Sistema de coordenadas y proyección
+
+Para que el cálculo de superficie en hectáreas sea correcto, la capa debe estar en un sistema de coordenadas proyectado (por ejemplo, UTM). Para transformar o reproyectar la capa en R, utiliza:
+
+```r
+# Transformar a un sistema proyectado (ejemplo: UTM Huso 19S / EPSG:32719)
+predios <- st_transform(predios, crs = 32719)
+```
+
+Personalización cosmética del gráfico
+La apariencia visual del histograma se configura mediante los parámetros de geom_histogram() y theme():
+
+```r
+geom_histogram(
+  binwidth = ancho_bin,  # Ancho de los intervalos
+  fill     = "#1f77b4",  # Color de relleno de las barras (código HEX o nombre)
+  color    = "white",    # Color de las líneas de borde
+  alpha    = 0.9         # Transparencia (0: transparente, 1: opaco)
+)
+```
+
+Para modificar tipografías, fondos, cuadrículas y márgenes:
+
+```r
+theme_minimal()
+
+# Ajustes cosméticos adicionales
+theme(
+  plot.title   = element_text(face = "bold", size = 14, hjust = 0.5),
+  axis.title   = element_text(face = "bold", size = 11),
+  axis.text    = element_text(size = 10),
+  panel.grid.minor = element_blank()
+)
+```
